@@ -37,9 +37,9 @@ void loop() {
   if (distancia > 30){
     motores.frente(100);
     pulsos_encoder0 = encoder_0.obter_pulsos();
-    trajeto_encoder0 += (pulsos_encoder0/20) * 19;
+    trajeto_encoder0 += (pulsos_encoder0/20) * 0.19;
     pulsos_encoder1 = encoder_1.obter_pulsos();
-    trajeto_encoder1 += (pulsos_encoder1/20) * 19;
+    trajeto_encoder1 += (pulsos_encoder1/20) * 0.19;
   }
   else{
     motores.direita(200);
@@ -63,7 +63,7 @@ void loop() {
   Serial.println(encoder_1.obter_pulsos());
   Serial.print("\n");
 
-  int delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / 0.0675;
+  int delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / (2*0.0675);
   float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(delta_angulo)); 
   float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(delta_angulo));
   float angulo_graus = delta_angulo * 180 / 3.1415;
@@ -78,4 +78,3 @@ void loop() {
    
   delay(300);
 }
-
