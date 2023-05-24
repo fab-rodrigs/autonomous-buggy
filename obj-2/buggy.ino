@@ -1,6 +1,7 @@
 #include "Ultrassom.h"
 #include "Motores.h"
 #include "Encoder.h"
+#include <math.h>
 //#include <SoftwareSerial.h>
 
 //SoftwareSerial bluetooth(2, 3);
@@ -60,22 +61,21 @@ void loop() {
   Serial.println(encoder_0.obter_pulsos());
   Serial.print("Encoder1 = "); // lado esquerdo
   Serial.println(encoder_1.obter_pulsos());
-  Serial.print("\n"); 
-  delay(1000);
+  Serial.print("\n");
+
+  int delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / 0.0675;
+  float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(delta_angulo)); 
+  float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(delta_angulo));
+  float angulo_graus = delta_angulo * 180 / 3.1415;
+  
+  Serial.print("Delta_X = ");
+  Serial.println(delta_x);
+  Serial.print("Delta_Y = ");
+  Serial.println(delta_y);
+  Serial.print("Delta_Angulo = ");
+  Serial.println(angulo_graus);
+  Serial.print("\n");
+   
+  delay(300);
 }
 
-//float delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / 0.0675;
-
-//float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(delta_angulo));
-  
-//float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(delta_angulo));
-
-//float angulo_graus = delta_angulo * 180 / pi;
-
-//Serial.print("Delta_X = ");
-//Serial.println(delta_x);
-//Seeial.print("Delta_Y = ");
-//Serial.println(delta_y);
-//Serial.print("Delta_Angulo = ");
-//Serial.println(angulo_graus);
-//Serial.print("\n");
