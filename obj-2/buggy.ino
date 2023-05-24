@@ -5,7 +5,6 @@
 //#include <SoftwareSerial.h>
 
 //SoftwareSerial bluetooth(2, 3);
-
 Ultrassom ultrassom_1(Ultrassom::ECHO1, Ultrassom::TRIG1);
 Motores motores;
 Encoder encoder_0 (Encoder::D0);
@@ -18,6 +17,7 @@ void setup() {
 }
 
 void loop() {
+   
   //if(bluetooth.available()){
   //     dadoBluetooth = bluetooth.read();
   //     Serial.println(dadoBluetooth);
@@ -49,8 +49,6 @@ void loop() {
     trajeto_encoder1 += (pulsos_encoder1/20) * 0.225;
   }
   
-  
-    
   Serial.print("Trajeto Encoder0 = ");
   Serial.println(trajeto_encoder0);
   Serial.print("Trajeto Encoder1 = ");
@@ -64,10 +62,11 @@ void loop() {
   Serial.println(encoder_1.obter_pulsos());
   Serial.print("\n");
 
+  // /*
   int delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / (2*0.0675);
   float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(radians(delta_angulo))); 
   float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(radians(delta_angulo)));
-  
+   
   Serial.print("Delta_X = ");
   Serial.println(delta_x);
   Serial.print("Delta_Y = ");
@@ -75,6 +74,7 @@ void loop() {
   Serial.print("Delta_Angulo = ");
   Serial.println(delta_angulo);
   Serial.print("\n");
+  // */
    
   delay(1000);
 }
