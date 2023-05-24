@@ -47,14 +47,6 @@ void loop() {
     pulsos_encoder1 = -encoder_1.obter_pulsos(); // lado esquerdo
     trajeto_encoder1 += (pulsos_encoder1/20) * 0.19;
   }
-
-//float delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / 0.0675;
-
-//float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(delta_angulo));
-  
-//float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(delta_angulo));
-
-//float angulo_rad = delta_angulo * 180 / pi;
   
   // a cada 20 pulsos, da 1 volta. 6 cm de diametro, logo pi * 6 = 19 cm de circunferência. Então a cada 20 pulsos, 1 volta, anda 19 cm.
     
@@ -71,3 +63,19 @@ void loop() {
   Serial.print("\n"); 
   delay(1000);
 }
+
+//float delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / 0.0675;
+
+//float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(delta_angulo));
+  
+//float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(delta_angulo));
+
+//float angulo_graus = delta_angulo * 180 / pi;
+
+//Serial.print("Delta_X = ");
+//Serial.println(delta_x);
+//Seeial.print("Delta_Y = ");
+//Serial.println(delta_y);
+//Serial.print("Delta_Angulo = ");
+//Serial.println(angulo_graus);
+//Serial.print("\n");
