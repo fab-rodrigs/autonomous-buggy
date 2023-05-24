@@ -10,7 +10,7 @@ Ultrassom ultrassom_1(Ultrassom::ECHO1, Ultrassom::TRIG1);
 Motores motores;
 Encoder encoder_0 (Encoder::D0);
 Encoder encoder_1 (Encoder::D1);
-int tempo, distancia, pulsos_encoder0, pulsos_encoder1, dadoBluetooth = 0;
+int tempo, distancia, pulsos_encoder0, pulsos_encoder1; // dadoBluetooth = 0;
 float trajeto_encoder0 = 0, trajeto_encoder1 = 0;
 
 void setup() {
@@ -37,7 +37,7 @@ void loop() {
   if (distancia > 30){
     motores.frente(100);
     pulsos_encoder0 = encoder_0.obter_pulsos();
-    trajeto_encoder0 += (pulsos_encoder0/20) * 0.225;
+    trajeto_encoder0 += (pulsos_encoder0/20) * 0.225; // 22.5 cm de circunferência
     pulsos_encoder1 = encoder_1.obter_pulsos();
     trajeto_encoder1 += (pulsos_encoder1/20) * 0.225;
   }
@@ -65,16 +65,15 @@ void loop() {
   Serial.print("\n");
 
   int delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / (2*0.0675);
-  float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(delta_angulo)); 
-  float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(delta_angulo));
-  float angulo_graus = delta_angulo * 180 / 3.1415;
+  float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(radians(delta_angulo))); 
+  float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(radians(delta_angulo)));
   
   Serial.print("Delta_X = ");
   Serial.println(delta_x);
   Serial.print("Delta_Y = ");
   Serial.println(delta_y);
   Serial.print("Delta_Angulo = ");
-  Serial.println(angulo_graus);
+  Serial.println(delta_angulo);
   Serial.print("\n");
    
   delay(1000);
