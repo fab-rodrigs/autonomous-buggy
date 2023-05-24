@@ -42,19 +42,19 @@ void loop() {
   }
   else{
     motores.direita(200);
-    pulsos_encoder0 = encoder_0.obter_pulsos();
+    pulsos_encoder0 = encoder_0.obter_pulsos(); // lado direito
     trajeto_encoder0 += (pulsos_encoder0/20) * 0.19;
-    pulsos_encoder1 = -encoder_1.obter_pulsos();
+    pulsos_encoder1 = -encoder_1.obter_pulsos(); // lado esquerdo
     trajeto_encoder1 += (pulsos_encoder1/20) * 0.19;
   }
 
-//delta_angulo = (distancia_roda_direita - distancia_roda_esquerda) / comprimento_eixo
+//float delta_angulo = (trajeto_encoder0 - trajeto_encoder1) / 0.0675;
 
-//delta_x = (distancia_roda_direita + distancia_roda_esquerda) / 2 * cos(angulo)
+//float delta_x = (trajeto_encoder0 + trajeto_encoder1) / (2 * cos(delta_angulo));
   
-//delta_y = (distancia_roda_direita + distancia_roda_esquerda) / 2 * sin(angulo)
+//float delta_y = (trajeto_encoder0 + trajeto_encoder1) / (2 * sin(delta_angulo));
 
-//angulo_rad = angulo_graus * pi / 180
+//float angulo_rad = delta_angulo * 180 / pi;
   
   // a cada 20 pulsos, da 1 volta. 6 cm de diametro, logo pi * 6 = 19 cm de circunferência. Então a cada 20 pulsos, 1 volta, anda 19 cm.
     
