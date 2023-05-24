@@ -37,7 +37,7 @@ void loop() {
   if (distancia > 30){
     motores.frente(100);
     pulsos_encoder0 = encoder_0.obter_pulsos();
-    trajeto_encoder0 += (pulsos_encoder0/20) * 0.225; // 22.5 cm de circunferência
+    trajeto_encoder0 += (pulsos_encoder0/20) * 0.225; // A cada 20 pulsos, da 1 volta. 22.5 cm de circunferência. 
     pulsos_encoder1 = encoder_1.obter_pulsos();
     trajeto_encoder1 += (pulsos_encoder1/20) * 0.225;
   }
@@ -49,7 +49,7 @@ void loop() {
     trajeto_encoder1 += (pulsos_encoder1/20) * 0.225;
   }
   
-  // a cada 20 pulsos, da 1 volta. 6 cm de diametro, logo pi * 6 = 19 cm de circunferência. Então a cada 20 pulsos, 1 volta, anda 19 cm.
+  
     
   Serial.print("Trajeto Encoder0 = ");
   Serial.println(trajeto_encoder0);
