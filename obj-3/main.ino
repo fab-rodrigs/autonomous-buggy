@@ -69,7 +69,7 @@ void loop() {
   Serial.print("\n"); 
   // */
   
-  // /* ---> POSIÇÂO X e Y <--- /*
+  // /* ---> POSIÇÂO X e Y <---
   float posicao_x = 0;
   float posicao_y = 0;
 
@@ -92,7 +92,7 @@ void loop() {
   Serial.print("\n");
   // */
 
-  // /* ---> SEGUIDOR DE LINHA <--- /*
+  // /* ---> SEGUIDOR DE LINHA <---
   //      preto = 1   branco = 0
   if(seguidor_linha.obter_esquerda() == 1 && seguidor_linha.obter_direita() == 1)
     motores.parar();
